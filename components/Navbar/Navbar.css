@@ -1,0 +1,76 @@
+a.nav-circle:after {
+  display: block;
+  content: "\25CF";
+  position: absolute;
+  color: #191414;
+  top: 100%;
+  width: 0.25rem;
+  height: 0.25rem;
+  left: 50%;
+  margin-top: 0.2rem;
+  border-radius: 1rem;
+  transform: translateX(-50%) scale(.2);
+  opacity: 0;
+  transition: transform 350ms, opacity 350ms;
+}
+
+a.nav-circle:hover:after {
+  display: block;
+  content: "\25CF";
+  position: absolute;
+  color: #191414;
+  top: 100%;
+  width: 0.25rem;
+  height: 0.25rem;
+  left: 50%;
+  margin-top: 0.2rem;
+  border-radius: 1rem;
+  transform: translateX(-50%) scale(.4);
+  opacity: 1;
+}
+
+a.nav-horizontal-circle:after {
+  display: block;
+  content: "\25CF";
+  position: absolute;
+  color: #191414;
+  top: .75rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  left: -1.75rem;
+  margin-top: 0.2rem;
+  border-radius: 1rem;
+  transform: translateX(100%) scale(.2);
+  opacity: 0;
+  transition: transform 350ms, opacity 350ms;
+}
+
+a.nav-horizontal-circle:hover:after {
+  display: block;
+  content: "\25CF";
+  position: absolute;
+  color: #191414;
+  top: .75rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  left: -1.75rem;
+  margin-top: 0.2rem;
+  border-radius: 1rem;
+  transform: translateX(-50%) scale(.4);
+  opacity: 1;
+}
+
+.nav-before {
+  background:linear-gradient(to right, #fff 50%, #FFBC4B 50%);
+  background-size: 200% 100%;
+  transition: all 650ms;
+}
+
+.open-nav {
+  background-position:0 0;
+}
+
+.close-nav {
+  background-position:-100% 0;
+  transition: none;
+}

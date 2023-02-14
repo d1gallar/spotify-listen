@@ -1,0 +1,12 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="200" height="200" transform="matrix(-1 0 0 1 200 0)" fill="#89B37A"/>
+<path d="M200 0C200 26.2644 194.827 52.2716 184.776 76.5367C174.725 100.802 159.993 122.85 141.421 141.421C122.85 159.993 100.802 174.725 76.5367 184.776C52.2716 194.827 26.2644 200 0 200L1.52588e-05 0H200Z" fill="#C2FFCC"/>
+<rect x="400" y="200" width="200" height="200" transform="rotate(180 400 200)" fill="#78A065"/>
+<rect x="400" y="200" width="200" height="100" transform="rotate(180 400 200)" fill="#C2FFCC"/>
+<path d="M300 0C244.772 0 200 47.0101 200 105L400 105C400 47.0101 355.228 0 300 0Z" fill="#C2FFCC"/>
+<rect width="200" height="200" transform="matrix(-1 0 0 1 200 200)" fill="#C2FFCC"/>
+<rect width="200" height="100" transform="matrix(-1 0 0 1 200 200)" fill="#78A065"/>
+<path d="M100 400C44.7715 400 0 351.647 0 292H200C200 351.647 155.228 400 100 400Z" fill="#78A065"/>
+<rect x="400" y="400" width="200" height="200" transform="rotate(180 400 400)" fill="#C2FFCC"/>
+<path d="M300 300C244.772 300 200 344.772 200 400H400C400 344.772 355.228 300 300 300Z" fill="#89B37A"/>
+</svg>

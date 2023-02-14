@@ -1,0 +1,1 @@
+export const paddingNum = (num: number) => String(num).padStart(2, '0');
