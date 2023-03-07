@@ -1,20 +1,17 @@
-import "./reset.css";
+import AuthProvider from "@/hooks/Auth";
 import "./globals.css";
-import {circular} from "./fonts";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html>
       <head />
-      <body className="w-screen h-screen">{children}</body>
+      <body className="w-screen h-screen">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
-  )
+  );
 }

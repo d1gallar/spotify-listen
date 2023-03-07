@@ -14,6 +14,6 @@ export default function useHover() {
     }),
     []
   );
-  
-  return {isHover, eventHandlers};
+
+  return { isHover, eventHandlers };
 }

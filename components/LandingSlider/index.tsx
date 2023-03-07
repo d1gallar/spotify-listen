@@ -1,10 +1,11 @@
 "use client";
-import { Slide } from "@/hooks/SliderControl";
+
 import Image from "next/image";
-import "./LandingSlider.css";
-import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import { useRef, useState } from "react";
+import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import { useContainerDimensions } from "@/hooks/ContainerDimensions";
+import { Slide } from "@/hooks/SliderControl";
+import "./LandingSlider.css";
 
 type LandingSliderProps = {
   slideInfo: {
@@ -52,7 +53,7 @@ export default function LandingSlider(props: LandingSliderProps) {
             props.slideInfo.getSlide().color
           } ${drag && "dragging"}`}
           ref={divRef}
-          style={{ transition: drag ? `transform 0.05s` : `opacity 1s`,}}
+          style={{ transition: drag ? `transform 0.05s` : `opacity 1s` }}
         >
           <Image
             className="w-full h-full"

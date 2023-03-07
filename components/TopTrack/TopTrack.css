@@ -1,0 +1,4 @@
+.top-tracks-grid-row {
+  grid-template-columns: [index] 16px [first] 3.5fr [var1] 3.5fr [last] 3fr;
+  width: 100%;
+}

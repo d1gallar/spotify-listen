@@ -1,7 +1,8 @@
 "use client";
+
 import Image from "next/image";
-import useHover from "@/hooks/Hover";
 import { Link as ScrollLink } from "react-scroll";
+import useHover from "@/hooks/Hover";
 
 export default function ScrollDownButton() {
   const { isHover, eventHandlers } = useHover();
@@ -21,6 +22,7 @@ export default function ScrollDownButton() {
           alt="Arrow Down"
           width="24"
           height="24"
+          draggable={false}
         />
       ) : (
         <Image
@@ -28,6 +30,7 @@ export default function ScrollDownButton() {
           alt="Arrow Down"
           width="24"
           height="24"
+          draggable={false}
         />
       )}
     </ScrollLink>

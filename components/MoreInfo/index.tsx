@@ -1,4 +1,3 @@
-import Image from "next/image";
 import "./MoreInfo.css";
 
 export default function MoreInfo() {
@@ -36,13 +35,6 @@ export default function MoreInfo() {
           </h5>
         </div>
       </div>
-      {/* <Image
-        className="absolute bottom-0 right-0 w-[100vw] md:w-[80vw]s"
-        src="/images/more-info.svg"
-        alt="Marshmello"
-        width="300"
-        height="300"
-      /> */}
     </section>
   );
 }

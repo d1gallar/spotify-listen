@@ -1,11 +1,12 @@
 "use client";
-import "./Navbar.css";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Link as ScrollableLink } from "react-scroll";
-import HamburgerIcon from "../HamburgerIcon";
-import { useMediaQuery } from "@/hooks/MediaQuery";
 import { useEffect, useState } from "react";
+import { Link as ScrollableLink } from "react-scroll";
+import { useMediaQuery } from "@/hooks/MediaQuery";
+import HamburgerIcon from "../HamburgerIcon";
+import "./Navbar.css";
 
 const SM_BREAKPT = 640;
 
@@ -31,6 +32,7 @@ export default function Navbar() {
               height={120}
               width={120}
               alt="Spotify Logo"
+              draggable={false}
             />
             <span className="font-circular text-2xl font-base tracking-wide">
               Listen

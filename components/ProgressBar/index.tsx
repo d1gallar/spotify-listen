@@ -7,7 +7,6 @@ type ProgressBarProps = {
 
 export default function ProgressBar(props: ProgressBarProps) {
   const calculatedWidth = (props.current / props.max) * 100;
-
   const formatCurrent = paddingNum(props.current);
   const formatMax = paddingNum(props.max);
   

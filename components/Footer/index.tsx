@@ -1,7 +1,8 @@
 "use client";
-import { Link as ScrollLink } from "react-scroll";
+
 import Link from "next/link";
 import Image from "next/image";
+import { Link as ScrollLink } from "react-scroll";
 
 const GITHUB = "https://github.com/d1gallar/your-spotify";
 const SPOTIFY = "https://open.spotify.com/";
@@ -17,6 +18,7 @@ export default function Footer() {
           width={120}
           alt="Spotify Logo"
           priority
+          draggable={false}
         />
       </Link>
       <div className="flex flex-col justify-center items-center gap-8 sm:flex-row sm:items-start">
@@ -70,6 +72,7 @@ export default function Footer() {
               height={30}
               width={30}
               alt="Github Logo"
+              draggable={false}
             />
           </Link>
         </div>

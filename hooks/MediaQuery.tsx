@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, ChangeEvent } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 export const useMediaQuery = (width: number) => {
   const [targetReached, setTargetReached] = useState(false);

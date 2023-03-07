@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function GettingStarted() {
@@ -16,6 +17,7 @@ export default function GettingStarted() {
             alt="A person dancing to music."
             width="600"
             height="600"
+            draggable={false}
           />
         </div>
         <div className="flex flex-col h-full w-fit justify-center gap-12">
@@ -31,9 +33,12 @@ export default function GettingStarted() {
             </h4>
           </div>
           <div className="flex flex-row justify-center md:justify-start">
-            <button className="px-16 py-4 font-circular text-lg text-white uppercase bg-black rounded-full w-fit font-semibold tracking-wide hover:bg-[#1d1d1d]">
+            <Link
+              className="px-16 py-4 font-circular text-lg text-white uppercase bg-black rounded-full w-fit font-semibold tracking-wide hover:bg-[#1d1d1d]"
+              href="/login"
+            >
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
       </div>
