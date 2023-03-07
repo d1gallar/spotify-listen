@@ -4,7 +4,7 @@ import { usePlayback } from "@/hooks/Playback";
 import useRefreshToken from "@/hooks/RefreshToken";
 import MainContainer from "@/components/MainContainer";
 import PlaylistTrack from "@/components/PlaylistTrack";
-import { Track } from "@/types/spotify";
+import { Track, Tracks } from "@/types/spotify";
 import { makeid } from "@/util/util";
 
 export default function Queue() {
@@ -16,11 +16,13 @@ export default function Queue() {
   }, []);
 
   let currentTrack: Track | null = null;
-  let nextQueue;
+  let nextQueue: Tracks = [];
+  let nextQueueUris: string[] = [];
   let similarSong = false;
   if (queue && queue.currently_playing) {
     currentTrack = queue.currently_playing as Track;
     nextQueue = queue.queue;
+    nextQueueUris = queue.queue.map((track) => track.uri);
     similarSong =
       nextQueue.filter(
         (track) => track.id === (currentTrack as unknown as Track).id
@@ -52,6 +54,10 @@ export default function Queue() {
                 id={currentTrack.id}
                 uri={currentTrack.uri}
                 isPlaying={true}
+                albumId={currentTrack.album.id}
+                playlistName={"queue"}
+                tracks={[currentTrack]}
+                trackUris={[currentTrack.uri]}
               />
             </div>
             <div className="w-full h-fit">
@@ -75,6 +81,10 @@ export default function Queue() {
                       id={track.id}
                       uri={track.uri}
                       isPlaying={false}
+                      albumId={track.album.id}
+                      playlistName={"queue"}
+                      tracks={nextQueue}
+                      trackUris={nextQueueUris}
                     />
                   );
                 })}
