@@ -60,10 +60,9 @@ export default function CurrentPlaylistProvider({
 
     spotifyWebApi.getMyCurrentPlaybackState().then((res) => {
       const playbackResponse = res.body as unknown as Playback;
-
       // Checks if device is active
       if (
-        !playbackResponse ||
+        playbackResponse === null ||
         !playbackResponse.device ||
         !playbackResponse.device.is_active
       ) {
@@ -112,6 +111,7 @@ export default function CurrentPlaylistProvider({
   const fetchCurrentPlayback = () => {
     spotifyWebApi.getMyCurrentPlaybackState().then((res) => {
       const playbackResponse = res.body as unknown as Playback;
+      if(playbackResponse === null) return;
       const playbackCurrentTrack = playbackResponse.item as Track;
 
       // checks the player is playing and there is a device
