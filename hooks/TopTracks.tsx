@@ -1,4 +1,4 @@
-import { TopItems, Tracks } from "@/types/spotify";
+import { useSession } from "next-auth/react";
 import {
   createContext,
   ReactNode,
@@ -6,9 +6,9 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useCurrentTrack } from "./CurrentTrack";
-import useSpotify from "./Spotify";
-import { useTimePeriod } from "./TimePeriod";
+import { useTimePeriod } from "@/hooks/TimePeriod";
+import useSpotify from "@/hooks/Spotify";
+import { TopItems, Tracks } from "@/types/spotify";
 
 const TRACK_LIMIT = 50; // 50 track limit
 
@@ -29,6 +29,8 @@ export default function TopTracksProvider({
 }) {
   const timePeriodContext = useTimePeriod();
   const spotifyWebApi = useSpotify();
+  const {data: session} = useSession();
+
   const [topTrackData, setTopTrackData] = useState<TopItems | null>(null);
   const [topTracks, setTopTracks] = useState<Tracks>([]);
   const [trackUris, setTrackUris] = useState<string[]>([]);
@@ -55,7 +57,7 @@ export default function TopTracksProvider({
   // fetches top 50 songs on initial mount
   useEffect(() => {
     getTopSongs();
-  }, []);
+  }, [session, spotifyWebApi]);
 
   // updates tracks, the track ids, and track uris whenever data changes
   useEffect(() => {

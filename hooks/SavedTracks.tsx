@@ -8,6 +8,7 @@ import {
 import useSpotify from "@/hooks/Spotify";
 import { useDebounce } from "./Debounce";
 import { SavedTrackItems, SavedTracks } from "@/types/spotify";
+import { useSession } from "next-auth/react";
 
 const TRACK_LIMIT = 20; // amount of tracks received per api call
 
@@ -32,6 +33,7 @@ export default function SavedTracksProvider({
   children: ReactNode | ReactNode[];
 }) {
   const spotifyWebApi = useSpotify();
+  const {data: session} = useSession();
 
   const [savedTrackData, setSavedTrackData] = useState<SavedTracks | null>(
     null
@@ -91,11 +93,12 @@ export default function SavedTracksProvider({
 
   const getDebouncedNextPage = useDebounce(getNextPage, 1500);
 
+  // Fetches the first 20 saved tracks on initial render
   useEffect(() => {
     if (!savedTrackData || !allSavedTracks || !likedArr) {
       getNextPage();
     }
-  }, []);
+  }, [spotifyWebApi, session]);
 
   // checks if a song is going to be removed / unliked
   useEffect(() => {

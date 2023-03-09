@@ -316,7 +316,7 @@ export default function PlaybackProvider({
 
   useEffect(() => {
     fetchQueue();
-  }, [spotifyWebApi]);
+  }, [spotifyWebApi, session]);
 
 
   return (

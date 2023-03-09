@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+
 import { usePlayback } from "@/hooks/Playback";
 import useRefreshToken from "@/hooks/RefreshToken";
 import MainContainer from "@/components/MainContainer";
@@ -9,11 +9,7 @@ import { makeid } from "@/util/util";
 
 export default function Queue() {
   useRefreshToken();
-  const { queue, fetchQueue } = usePlayback();
-
-  useEffect(() => {
-    fetchQueue();
-  }, []);
+  const { queue } = usePlayback();
 
   let currentTrack: Track | null = null;
   let nextQueue: Tracks = [];

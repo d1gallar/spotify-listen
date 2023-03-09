@@ -4,11 +4,16 @@ import RecentlyPlayedTracks from "../RecentlyPlayedTracks";
 import { RecentlyPlayedSkeleton } from "../Skeletons";
 
 export default function RecentlyPlayed() {
-  const { recentTracks, likedArr, recentTrackUris, recentTrackIds, recentlyPlayedData} =
-    useRecentlyPlayed();
+  const {
+    recentTracks,
+    likedArr,
+    recentTrackUris,
+    recentTrackIds,
+    recentlyPlayedData,
+  } = useRecentlyPlayed();
 
   if (
-    !recentlyPlayedData || 
+    !recentlyPlayedData ||
     !recentTracks ||
     !likedArr ||
     !recentTrackUris ||

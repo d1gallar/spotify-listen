@@ -1,5 +1,6 @@
 import { RecentlyPlayed, RecentlyPlayedItem, Tracks } from "@/types/spotify";
 import { getPastDay } from "@/util/util";
+import { useSession } from "next-auth/react";
 import {
   createContext,
   ReactNode,
@@ -8,6 +9,8 @@ import {
   useState,
 } from "react";
 import useSpotify from "./Spotify";
+
+const TRACK_LIMIT = 50; // limits api to request 50 tracks
 
 type RecentlyPlayedContextType = {
   recentlyPlayedData: RecentlyPlayed | null;
@@ -25,37 +28,42 @@ export function RecentlyPlayedProvider({
   children: ReactNode | ReactNode[];
 }) {
   const spotifyWebApi = useSpotify();
+  const {data: session} = useSession();
 
-  const [recentlyPlayedData, setRecentlyPlayedData] = useState<RecentlyPlayed | null>(
-    null
-  );
+  const [recentlyPlayedData, setRecentlyPlayedData] =
+    useState<RecentlyPlayed | null>(null);
   const [recentTracks, setRecentTracks] = useState<RecentlyPlayedItem[]>([]);
   const [likedArr, setLikedArr] = useState<boolean[]>([]);
   const [recentTrackUris, setRecentTrackUris] = useState<string[]>([]);
   const [recentTrackIds, setRecentTrackIds] = useState<string[]>([]);
 
-  // Fetch all tracks on initial mount
-  useEffect(() => {
+  // Fetches 50 recently played songs from Spotify Api
+  const fetchRecentlyPlayed = () => {
     const token = spotifyWebApi.getAccessToken();
     const pastDay = getPastDay(new Date());
     if (token) {
       spotifyWebApi
         .getMyRecentlyPlayedTracks({
           after: pastDay.getTime(),
-          limit: 50,
+          limit: TRACK_LIMIT,
         })
         .then((data) => {
           const typedData = data.body as unknown as RecentlyPlayed;
           setRecentlyPlayedData(typedData);
           setRecentTracks(typedData.items);
         })
-        .catch();
+        .catch((e) => console.error(e));
     }
-  }, []);
+  };
+
+  // Fetch recently played tracks on initial mount
+  useEffect(() => {
+    fetchRecentlyPlayed();
+  }, [session, spotifyWebApi]);
 
   // Tracks all tracks and whether they have been liked if data is available
   useEffect(() => {
-    if(!recentlyPlayedData) return;
+    if (!recentlyPlayedData) return;
     const allTrackIds: string[] = recentTracks.map((item) => item.track.id);
     spotifyWebApi.containsMySavedTracks(allTrackIds).then((res) => {
       const result = res.body as unknown as boolean[];
@@ -63,9 +71,9 @@ export function RecentlyPlayedProvider({
     });
   }, [recentTracks]);
 
-  // Updates recently played track uris and ids if data is availaable
+  // Updates recently played track uris and ids if data is available
   useEffect(() => {
-    if(!recentlyPlayedData) return;
+    if (!recentlyPlayedData) return;
     const allTrackIds: string[] = recentTracks.map((item) => item.track.id);
     const allTrackUris: string[] = recentTracks.map((item) => item.track.uri);
     setRecentTrackUris(allTrackUris);
