@@ -1,6 +1,7 @@
 # Spotify Listen
 
-![spotify-listen-showcase](https://github.com/d1gallar/spotify-listen/assets/49170814/f9fc25d7-749a-4f0c-9a6a-65efc00e6fa3)
+![spotify-listen-showcase](https://github.com/d1gallar/spotify-listen/assets/49170814/127ed750-43a6-45ae-b075-4f4f08039223)
+
 
 ## 📄 Description
 This project is a web app that helps visualize your personal data from Spotify. It has a dashboard that tracks your top artist and top songs from a given time period. It also generates a playlist based on your top songs.
